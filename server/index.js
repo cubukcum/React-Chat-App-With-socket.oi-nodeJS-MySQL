@@ -10,9 +10,9 @@ app.use(cors());
 app.use(express.json());
 
 const db = mysql.createConnection({
-  user: "mehmet",
-  host: "192.168.64.2",
-  password: "mehmet",
+  user: "root",
+  host: "localhost",
+  password: "",
   database: "messenger",
 });
 
@@ -50,7 +50,6 @@ app.post("/login", (req, res) => {
     [username],
     (err, result) => {
       if (err) res.status(400).json({ error: "User Doesnt Exist" });
-      console.log(result)
       const dbPassword = result[0].password
 
       bcrypt.compare(password, dbPassword).then((match) => {

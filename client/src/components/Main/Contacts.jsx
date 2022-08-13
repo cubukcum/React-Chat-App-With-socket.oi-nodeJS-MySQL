@@ -1,28 +1,8 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 
 
 
 const Contacts = ({data, currentUser, online}) => {
-    const [userData, setUserData] = useState(null)
-    
-    useEffect(()=> {
-
-        // const userId = data.members.find((id)=>id!==currentUser)
-        const getUserData = async ()=> {
-          try
-          {
-            //   const {data} =await getUser(userId)
-            //  setUserData(data)
-
-          }
-          catch(error)
-          {
-            console.log(error)
-          }
-        }
-    
-        // getUserData();
-      }, [])
 
     return (
         <>

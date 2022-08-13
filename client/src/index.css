@@ -18,6 +18,17 @@ code {
   margin-left: 131px;
   color: #E15151;
 }
+
+.header-content{
+  display: flex;
+  flex-direction: row;
+}
+
+.logout{
+  align-self: flex-end;
+  margin-left: 500px;
+}
+
 .login-items{
   display: flex;
   margin-left: 70%;
@@ -56,7 +67,6 @@ code {
   border:2px solid red;
   border-color: rgb(122, 108, 223);
 }
-
 
 /* commect for css */
 .Chat {

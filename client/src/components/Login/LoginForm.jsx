@@ -15,8 +15,7 @@ useEffect(() =>{
   if (localStorage.getItem("currentUser")){
     n('/chat')
   }
-},[])
-
+})
 
   const login = () => {
     console.log(localStorage.getItem('currentUser'))
@@ -25,17 +24,14 @@ useEffect(() =>{
       username: username,
       password: password,
     }).then(e => {
-      console.log(e.status)
       if (e.status) {
         message.success(e?.data.message)
         localStorage.setItem("currentUser", e?.data.userId)
+        setLoading(false);
         n('/chat')
       }
     }).catch(e => {
       message.error("Wrong Username/Password" + e.message)
-    }).finally(() => {
-      console.log("basarili")
-      setLoading(false)
     })
   }
 
@@ -109,7 +105,7 @@ useEffect(() =>{
             span: 16,
           }}
         >
-          <Button type="primary" htmlType="submit">
+          <Button loading={loading} type="primary" htmlType="submit">
             Submit
           </Button>
         </Form.Item>

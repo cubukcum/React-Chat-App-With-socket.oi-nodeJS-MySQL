@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react'
+import { useNavigate } from 'react-router-dom';
 import { message } from 'antd';
 import ChatBox from './ChatBox';
 import Contacts from './Contacts';
@@ -7,6 +8,15 @@ import { io } from 'socket.io-client';
 
 
 const Chat = () => {
+const nav = useNavigate();
+
+useEffect(()=>{
+  if (localStorage.getItem('currentUser') === null){
+    nav('/');
+  }
+})
+
+
     const [data, setData] = useState([]);
     const [onlineUsers, setOnlineUsers] = useState([]);
     const [currentChat, setCurrentChat] = useState(null);
@@ -20,13 +30,9 @@ const Chat = () => {
     const getPeople = () => {
         api.get("/people", {
         }).then(e => {
-            message.success("Success")
-            console.log(e.data)
             setData(e.data)
         }).catch(e => {
             message.error("Error loading users" + e.message)
-        }).finally(() => {
-            console.log("finally in contact component")
         })
     }
     useEffect(() => {

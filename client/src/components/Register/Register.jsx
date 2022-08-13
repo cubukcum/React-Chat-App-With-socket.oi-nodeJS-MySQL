@@ -38,11 +38,10 @@ const tailFormItemLayout = {
   },
 };
 
-const Register = ({ cU, sC }) => {
+const Register = () => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const n = useNavigate();
-  const [currentUser, setCurrentUser] = [cU, sC ]
 
   const [username, setUsername] = useState("");
   const [fname, setFname] = useState("");
@@ -62,16 +61,13 @@ const Register = ({ cU, sC }) => {
       phone: phone,
     }).then(e => {
       message.success("Success")
-      setCurrentUser(username)
+      setLoading(false)
       n('/chat')
     }).catch(e => {
       message.error("Username already exists")
-    }).finally(() => {
-      console.log("basarili")
-      setLoading(false)
     })
   }
-  console.log(currentUser)
+
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <Select

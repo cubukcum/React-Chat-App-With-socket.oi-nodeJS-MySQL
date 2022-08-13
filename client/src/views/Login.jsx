@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Tabs, Button } from 'antd';
+import React from 'react'
+import { Tabs } from 'antd';
 import LoginForm from '../components/Login/LoginForm';
 import Register from '../components/Register/Register';
 
